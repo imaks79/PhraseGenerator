@@ -16,8 +16,8 @@ from bip_utils import (
 )
 
 
-@njit(parallel=True)
-def start_proc(add_set, words, nums, wordlist):
+@njit(parallel = True)
+def start_proc(add_set:set, __words__:list, __nums__:dict, __wordlist__:list):
 	'''
 	add_set => <class 'set'>
 	words => <class 'list'>
@@ -26,14 +26,10 @@ def start_proc(add_set, words, nums, wordlist):
 	'''
 	
 	while True:
+		
+		words, nums, wordlist = __words__[:], __nums__[:], __wordlist__[:];
+		
 		ddd = ' '.join(random.sample(words, 11))
-	    ########## ########## ########## ########## ##########
-		# TODO: НУЖНО ПО НАЧАЛУ ЦИКЛА ПРОСТО ОБНОВЛЯТЬ СЛОВА
-	    ########## ########## ########## ########## ##########
-	    tmp1, tmp2, tmp3 = list(), dict(), list();
-		tmp1, tmp2, tmp3 = words[:], dict(nums), wordlist[:];
-		words, nums, wordlist = tmp1[:], dict(tmp2), tmp3[:];
-		########## ########## ########## ########## ##########
 		# ddd = "between cage ketchup write supreme cash destroy shy escape nothing wild"
 		words = [w.lower() for w in ddd.split() if w.lower() in nums]
 
