@@ -4,6 +4,7 @@ from utils import getmsg
 from crypt import start_proc
 
 
+
 @jit(parallel = True)
 def main():
 	btc_path = os.path.join('data','btc.txt'); 
