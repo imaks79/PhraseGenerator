@@ -1,6 +1,7 @@
-# from report import getmsg
-# from crypt import start_proc
+import os
 
+from utils import getmsg
+from crypt import start_proc
 
 
 def main():
@@ -8,15 +9,17 @@ def main():
 	eng_path = os.path.join('data', 'english.txt');
 
 	add_set = set();
-	nums = {}
-	wordlist = []
+	nums = {};
+	wordlist = [];
 
-  # ПОЛУЧЕНИЕ КОНСОЛЬНОЙ ИНФОРМАЦИИ   
+  	# ПОЛУЧЕНИЕ КОНСОЛЬНОЙ ИНФОРМАЦИИ   
 	getmsg();
 
 
 	with open(btc_path) as f:
-		for line in f: if line.strip(): add_set.add(line.strip());
+		for line in f: 
+			if line.strip(): 
+				add_set.add(line.strip());
               
               
 	with open(eng_path, 'r') as f:
@@ -28,7 +31,6 @@ def main():
 			i += 1;
 
 	start_proc(add_set, words, nums, wordlist);
-
 
 
 if __name__ == "__main__":

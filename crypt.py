@@ -1,5 +1,5 @@
 import os, time, random
-from numba import njit
+from numba import njit, jit
 
 
 from utils import isOk
@@ -16,7 +16,8 @@ from bip_utils import (
 )
 
 
-@njit(parallel = True)
+# @njit(parallel = True)
+@jit
 def start_proc(add_set:set, __words__:list, __nums__:dict, __wordlist__:list):
 	'''
 	add_set => <class 'set'>
@@ -27,9 +28,10 @@ def start_proc(add_set:set, __words__:list, __nums__:dict, __wordlist__:list):
 	
 	while True:
 		
-		words, nums, wordlist = __words__[:], __nums__[:], __wordlist__[:];
-		
-		ddd = ' '.join(random.sample(words, 11))
+		words, nums, wordlist = __words__, __nums__, __wordlist__;
+
+
+		ddd = ' '.join(random.sample(words, 11));
 		# ddd = "between cage ketchup write supreme cash destroy shy escape nothing wild"
 		words = [w.lower() for w in ddd.split() if w.lower() in nums]
 
