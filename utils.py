@@ -23,9 +23,9 @@ def getmsg(add_set:str = None):
 
 
 def isOk(ws, nums):
-    N = 0
+    N = 0;
     for w in ws:
-        N = (N << 11) + nums.get(w.lower(), 0)
-    nhex = format(N, '033x')
-    h = hashlib.sha256(binascii.unhexlify(nhex[:-1])).hexdigest()
-    return h[0] == nhex[-1]
+        N = (N << 11) + nums.get(w.lower(), 0);
+    nhex = format(N, '033x');
+    h = hashlib.sha256(binascii.unhexlify(nhex[:-1])).hexdigest();
+    return h[0] == nhex[-1];
