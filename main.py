@@ -1,11 +1,13 @@
 import os
 
+from numba import njit, jit
+
 from utils import getmsg
 from crypt import start_proc
 
 
 
-@jit(parallel = True)
+# @jit(parallel = True)
 def main():
 	btc_path = os.path.join('data','btc.txt'); 
 	eng_path = os.path.join('data', 'english.txt');
@@ -32,7 +34,7 @@ def main():
 			wordlist.append(word.strip());
 			i += 1;
 
-	getmsg(add_set);
+	
 	start_proc(add_set, words, nums, wordlist);
 
 
