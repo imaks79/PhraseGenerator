@@ -18,8 +18,11 @@ from bip_utils import (
 
 
 # @njit(parallel = True)
-@jit(parallel = True)
-def start_proc(add_set:set, __words__:list, __nums__:dict, __wordlist__:list):
+
+# @jit
+
+@njit
+def start_proc(add_set, __words__, __nums__, __wordlist__):
 	'''
 	add_set => <class 'set'>
 	words => <class 'list'>
@@ -53,11 +56,11 @@ def start_proc(add_set:set, __words__:list, __nums__:dict, __wordlist__:list):
 				cand = words + [wordlist[i]];
 				result = ' '.join(cand);
 				# ######## ######## ######## ######## # 
-				generated_results_count += 1;
-				if generated_results_count % 100 == 0:
-					elapsed_time = time.time() - start_time;
-					results_per_second = generated_results_count // elapsed_time;
-					print(f"{generated_results_count} полученные результаты ({results_per_second} SEED/second)", end = '\r', flush = True);
+				# generated_results_count += 1;
+				# if generated_results_count % 100 == 0:
+				# 	elapsed_time = time.time() - start_time;
+				# 	results_per_second = generated_results_count // elapsed_time;
+				# 	print(f"{generated_results_count} полученные результаты ({results_per_second} SEED/second)", end = '\r', flush = True);
 				# ######## ######## ######## ######## #
 				if isOk(cand, nums):
 					seed_bytes = Bip39SeedGenerator(result).Generate();
