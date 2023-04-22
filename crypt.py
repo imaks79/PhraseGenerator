@@ -17,11 +17,6 @@ from bip_utils import (
 )
 
 
-# @njit(parallel = True)
-
-# @jit
-
-@njit
 def start_proc(add_set, __words__, __nums__, __wordlist__):
 	'''
 	add_set => <class 'set'>
@@ -31,17 +26,14 @@ def start_proc(add_set, __words__, __nums__, __wordlist__):
 	'''
 
 	getmsg(add_set);
+	cnt_of_words = 1;
 
-	words, nums, wordlist = __words__, __nums__, __wordlist__;
 
-	ddd = ' '.join(random.sample(words, 11));
-	words = [w.lower() for w in ddd.split() if w.lower() in nums];
-	
 	while True:
 		
 		words, nums, wordlist = __words__, __nums__, __wordlist__;
 
-		ddd = ' '.join(random.sample(words, 11));
+		ddd = ' '.join(random.sample(words, cnt_of_words));
 
 		# ddd = "between cage ketchup write supreme cash destroy shy escape nothing wild"
 		words = [w.lower() for w in ddd.split() if w.lower() in nums];
@@ -51,8 +43,8 @@ def start_proc(add_set, __words__, __nums__, __wordlist__):
 
 		# TODO: 0 длина
 
-		if len(words) == 11:
-			for i in range(2048):
+		if len(words) == cnt_of_words:
+			for i in range(len(wordlist)):
 				cand = words + [wordlist[i]];
 				result = ' '.join(cand);
 				# ######## ######## ######## ######## # 
