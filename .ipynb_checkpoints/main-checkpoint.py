@@ -1,6 +1,5 @@
 import os
 
-# import pandas as pd
 from numba import njit, jit
 
 from utils import getmsg
@@ -22,8 +21,6 @@ def main():
     # ПОЛУЧЕНИЕ КОНСОЛЬНОЙ ИНФОРМАЦИИ   
     getmsg();
 
-# data = pd.read_csv(ENG_PATH, sep = " ", header = None)
-# data = pd.read_csv(BTC_PATH, sep = " ", header = None)
 
     with open(BTC_PATH, 'r') as f:
         for line in f: 
