@@ -54,29 +54,42 @@ def start_proc(add_set, __words__, __nums__, __wordlist__):
 				# 	results_per_second = generated_results_count // elapsed_time;
 				# 	print(f"{generated_results_count} полученные результаты ({results_per_second} SEED/second)", end = '\r', flush = True);
 				# ######## ######## ######## ######## #
+
+				
 				if isOk(cand, nums):
 					seed_bytes = Bip39SeedGenerator(result).Generate();
+					# TODO: threadin 1
 					bip44_mst_ctx = Bip44.FromSeed(seed_bytes, Bip44Coins.BITCOIN);
-					bip49_mst_ctx = Bip49.FromSeed(seed_bytes, Bip49Coins.BITCOIN);
-					bip84_mst_ctx = Bip84.FromSeed(seed_bytes, Bip84Coins.BITCOIN);
-					bip86_mst_ctx = Bip86.FromSeed(seed_bytes, Bip86Coins.BITCOIN);
 					bip44_acc_ctx = bip44_mst_ctx.Purpose().Coin().Account(0);
-					bip49_acc_ctx = bip49_mst_ctx.Purpose().Coin().Account(0);
-					bip84_acc_ctx = bip84_mst_ctx.Purpose().Coin().Account(0);
-					bip86_acc_ctx = bip86_mst_ctx.Purpose().Coin().Account(0);
 					bip44_chg_ctx = bip44_acc_ctx.Change(Bip44Changes.CHAIN_EXT);
+					# TODO: threadin 2
+					bip49_mst_ctx = Bip49.FromSeed(seed_bytes, Bip49Coins.BITCOIN);
+					bip49_acc_ctx = bip49_mst_ctx.Purpose().Coin().Account(0);
 					bip49_chg_ctx = bip49_acc_ctx.Change(Bip44Changes.CHAIN_EXT);
+					# TODO: threadin 3
+					bip84_mst_ctx = Bip84.FromSeed(seed_bytes, Bip84Coins.BITCOIN);
+					bip84_acc_ctx = bip84_mst_ctx.Purpose().Coin().Account(0);
 					bip84_chg_ctx = bip84_acc_ctx.Change(Bip44Changes.CHAIN_EXT);
+					# TODO: threadin 4
+					bip86_mst_ctx = Bip86.FromSeed(seed_bytes, Bip86Coins.BITCOIN);
+					bip86_acc_ctx = bip86_mst_ctx.Purpose().Coin().Account(0);
 					bip86_chg_ctx = bip86_acc_ctx.Change(Bip44Changes.CHAIN_EXT);
+					
+					
 					print(result);
 					for i in range(20):
 		                # TODO: bip32_der_ctx = bip32_mst_eth.DerivePath("m/44'/60'/0'/0/" + str(i))
+						
+						# TODO: threadin 1
 						bip44_addr_ctx = bip44_chg_ctx.AddressIndex(i);
 						seed44 = bip44_addr_ctx.PublicKey().ToAddress();
+						# TODO: threadin 2
 						bip49_addr_ctx = bip49_chg_ctx.AddressIndex(i);
 						seed49 = bip49_addr_ctx.PublicKey().ToAddress();
+						# TODO: threadin 3
 						bip84_addr_ctx = bip84_chg_ctx.AddressIndex(i);
 						seed84 = bip84_addr_ctx.PublicKey().ToAddress();
+						# TODO: threadin 4
 						bip86_addr_ctx = bip86_chg_ctx.AddressIndex(i);
 						seed86 = bip86_addr_ctx.PublicKey().ToAddress();
 

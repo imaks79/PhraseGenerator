@@ -22,15 +22,18 @@ def main():
     # ПОЛУЧЕНИЕ КОНСОЛЬНОЙ ИНФОРМАЦИИ   
     getmsg();
 
-# data = pd.read_csv(ENG_PATH, sep = " ", header = None)
-# data = pd.read_csv(BTC_PATH, sep = " ", header = None)
 
+
+
+    # TODO: Переделать под pandas
+    # data = pd.read_csv(BTC_PATH, sep = " ", header = None)
     with open(BTC_PATH, 'r') as f:
         for line in f: 
             if line.strip(): 
                 add_set.add(line.strip());
               
-              
+    # TODO: Переделать под pandas   
+    # data = pd.read_csv(ENG_PATH, sep = " ", header = None)
     with open(ENG_PATH, 'r') as f:
         words = f.read().splitlines();
 
@@ -40,6 +43,8 @@ def main():
             nums[word.strip()] = i;
             wordlist.append(word.strip());
             i += 1;
+
+
 
     start_proc(add_set, words, nums, wordlist);
 
