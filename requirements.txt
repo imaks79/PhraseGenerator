@@ -6,3 +6,4 @@ bip_utils
 rich
 tqdm
 numba
+pandas
