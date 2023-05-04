@@ -4,5 +4,5 @@
 
 ## Запуск
 
-`linux` - `bash start_notebook.sh`
+`linux` - `bash start_notebook.sh`  
 `windows` - запустить файл `start_notebook.bat`
