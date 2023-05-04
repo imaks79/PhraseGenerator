@@ -2,6 +2,7 @@
 
 Программа предназначена для генерации сид фраз и их сравнения.
 
-## 
+## Запуск
 
-- `jupyter-lab` & `jupyter-notebook`
+`linux` - `bash start_notebook.sh`
+`windows` - запустить файл `start_notebook.bat`
